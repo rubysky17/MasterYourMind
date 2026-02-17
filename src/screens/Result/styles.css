@@ -1,0 +1,285 @@
+/* --- Global Reset & Layout --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.result-container {
+  /* Chiều cao 100dvh để full màn hình điện thoại, tránh thanh địa chỉ che mất */
+  height: 100dvh; 
+  display: flex;
+  flex-direction: column; /* Xếp dọc toàn bộ nội dung */
+  
+  background: radial-gradient(circle at top left, #102a43, #0b1117);
+  color: white;
+  padding: 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom)); /* Hỗ trợ iPhone tai thỏ */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden; /* Chặn cuộn trang chính, chỉ cuộn list */
+}
+
+/* --- Header --- */
+.res-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* Không bị co lại khi màn hình nhỏ */
+  margin-bottom: 20px;
+}
+
+.res-title {
+  color: #3b82f6; 
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.icon-btn-circle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* --- Circular Score --- */
+.score-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.circular-chart {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3)); /* Glow Effect */
+}
+
+.bg-ring {
+  fill: none;
+  stroke: #1e293b;
+  stroke-width: 8;
+}
+
+.progress-ring-circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-number {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.percent {
+  font-size: 20px;
+  color: #94a3b8;
+}
+
+.score-label {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 12px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-icon {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.text-cyan { color: #22d3ee; }
+.text-blue { color: #3b82f6; }
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* --- Review Section (Flexbox Magic) --- */
+.review-section {
+  flex: 1; /* Chiếm toàn bộ không gian còn lại */
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Fix lỗi flexbox để scroll hoạt động */
+  margin-bottom: 20px;
+}
+
+.review-header {
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.review-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.review-list {
+  flex: 1; /* Tự giãn trong review-section */
+  overflow-y: auto; /* Chỉ scroll ở đây */
+  padding-right: 5px;
+  
+  /* Ẩn thanh cuộn */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.review-list::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* --- Review Card --- */
+.review-card {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  background-color: #0f172a; /* Card nền tối */
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+}
+.review-card.incorrect::before {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444; 
+}
+
+.review-card.correct::before {
+  background-color: #4ade80;
+  box-shadow: 0 0 8px #4ade80; 
+}
+
+.status-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.status-icon.bg-red { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; }
+/* Design không hiển thị icon xanh rõ ràng cho câu đúng, để trống hoặc mờ */
+.status-icon.bg-green { background-color: rgba(74, 222, 128, 0.15); color: #4ade80;} 
+
+.review-content {
+  flex: 1;
+}
+
+.expr-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.correction-sub {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.text-green-light { color: #4ade80; }
+.text-red { color: #ef4444; }
+.strikethrough { text-decoration: line-through; opacity: 0.7; }
+
+.review-right {
+  text-align: right;
+  min-width: 40px;
+}
+
+.user-ans {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* --- Footer --- */
+.footer-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0; /* Footer luôn cố định, không bị co */
+}
+
+.btn-home, .btn-play-again {
+  height: 50px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-home {
+  flex: 1;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.btn-play-again {
+  flex: 2;
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}

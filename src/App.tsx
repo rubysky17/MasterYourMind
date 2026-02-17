@@ -1,33 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import PWABadge from './PWABadge.tsx'
-import './App.css'
+import { AppProvider } from "./store/Provider";
+import MathTrainer from "./screens/MathTrainer";
+import OnboardScreen from "./screens/Onboard";
+import ResultScreen from "./screens/Result/Result";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>masterYourMind</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <PWABadge />
-    </>
-  )
+    <AppProvider>
+      <OnboardScreen />
+      <MathTrainer />
+      <ResultScreen />
+    </AppProvider>
+  );
 }
 
-export default App
+export default App;

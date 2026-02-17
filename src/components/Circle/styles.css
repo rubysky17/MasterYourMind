@@ -1,0 +1,60 @@
+
+/* --- Circular Score --- */
+.score-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.circular-chart {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg); /* Xoay để bắt đầu từ 12h */
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4)); /* Glow effect */
+}
+
+.bg-ring {
+  fill: none;
+  stroke: #1e293b;
+  stroke-width: 6;
+}
+
+.progress-ring-circle {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-number {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.percent {
+  font-size: 24px;
+  color: #94a3b8;
+}
+
+.score-label {
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}

@@ -1,0 +1,60 @@
+.keypad {
+  background-color: #253341;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.keypad-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.keypad-row:last-child {
+  margin-bottom: 0px;
+}
+
+.keypad button {
+  flex: 1;
+  height: 60px;
+  background-color: #161e29;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s;
+}
+
+.keypad button.next {
+  background-color: #0d7ff2;
+}
+
+.keypad button.next:active {
+  background-color: #2563eb;
+  transform: scale(0.98);
+}
+
+.keypad button.next:disabled {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.keypad button.backspace {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.keypad button.backspace:active {
+  transform: scale(0.98);
+}
+
+.keypad button:active {
+  background-color: #161d25;
+  transform: scale(0.98);
+}

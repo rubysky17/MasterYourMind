@@ -1,0 +1,71 @@
+.display-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.equation {
+  font-size: 28px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.equation .num {
+  font-weight: 500;
+}
+
+.equation .num.dim {
+  color: #475569;
+}
+
+.equation .num.highlight {
+  color: white;
+  font-size: 36px;
+}
+
+.equation .op {
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.input-value {
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.cursor {
+  width: 3px;
+  height: 60px;
+  background-color: #3b82f6;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.helper-text {
+  color: #64748b;
+  font-size: 14px;
+}
